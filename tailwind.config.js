@@ -12,7 +12,16 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+          primary: "#FF5733",  // Thêm màu tùy chỉnh
+          secondary: "#33FF57",
+          success: "#28a745",
+          error: "#dc3545",
+          warning: "#ffc107",
+          info: "#17a2b8"
+        },
     },
   },
   plugins: [],
+  
 };
