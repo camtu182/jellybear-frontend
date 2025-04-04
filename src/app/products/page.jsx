@@ -75,10 +75,10 @@ const ProductsPage = () => {
         setFilteredProducts(filtered);
     };
     return (
-        <div className="bg-blue-100 pt-5">
+        <div className="bg-blue-100 pb-10 lg:pt-20 md:pt-40 content-center">
             <button
                 onClick={toggleSidebar}
-                className="fixed top-20 right-4 z-10 bg-black hover:bg-red-500 text-white p-2 rounded-md hover"    
+                className="fixed lg:top-20 lg:right-4 md:top-40 md:right-14 z-10 bg-black hover:bg-red-500 text-white p-2 rounded-md hover"    
                 style={{ zIndex: 20 }} // Ensure the button is above other elements
             >
                 {isSidebarOpen ? "Close Filters" : "Open Filters"}

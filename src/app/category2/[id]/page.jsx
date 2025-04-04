@@ -27,7 +27,7 @@ const CollectionByCategory = () => {
         <div>
             Sản phẩm thuộc danh mục {category2 !== null && category2.attributes.name}
             <section id="Projects"
-                className="static w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-5 gap-x-5 mt-10 mb-5">
+                className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-7 gap-x-5 mt-10">
                 {
                     collections.map((value, index) => {
                         return <CollectionComponent

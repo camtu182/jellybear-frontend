@@ -21,8 +21,13 @@ const ShoppingCartPage = () => {
     console.log(shoppingCart)
     useEffect(() => {
         calcTotalPrice();
-        
-    }, [shoppingCart])
+        if (!isLogined()) {
+            router.replace("/login")
+        }
+        if (getUser()?.role?.name === "ShopManager"){
+            router.replace("/shop-manager")
+        }
+    }, [shoppingCart,searchParams])
     const calcTotalPrice = () => {
         var sum = 0
         for (var i = 0; i < shoppingCart.length; i++) {
@@ -76,11 +81,11 @@ const ShoppingCartPage = () => {
         }
     }
     return (
-        <div className="bg-gray-100 h-screen py-8">
-            <div className="container w-[90vw] mx-auto px-4 py-10">
+        <div className="bg-gray-100 h-screen lg:py-11 md:py-40">
+            <div className="container lg:w-[80vw] md:w-[90vw] mx-auto px-4 py-10">
                 <h1 className="text-4xl font-bold  text-center  mb-4">SHOPPING CART</h1>
-                <div className="flex flex-col md:flex-row gap-4">
-                    <div className="md:w-3/5">
+                <div className="md:flex md:flex-col lg:flex-row gap-4">
+                    <div className="lg:w-3/5 md:w-5/5">
                         <div className="bg-white rounded-lg shadow-md p-6 mb-4">
                             <table className="w-full">
                                 <thead>
@@ -117,14 +122,14 @@ const ShoppingCartPage = () => {
                             </table>
                         </div>
                     </div>
-                    <div className="md:w-2/5">
+                    <div className="lg:w-2/5 md:w-5/5">
                         <div className="bg-white rounded-lg shadow-md p-6">
-                            <h2 className="text-xl font-bold mb-4">Summary</h2>
+                            <h2 className="text-2xl text-center font-bold mb-4">Summary</h2>
                             
                             <hr className="my-2"/>
-                            <div className="flex justify-between mb-2">
-                                <span className="text-xl font-bold">Total</span>
-                                <span className="text-xl font-bold">${totalPrice}</span>
+                            <div className="flex lg:justify-between md:justify-center mb-2">
+                                <span className="text-xl font-bold md:right-0">Total: </span>
+                                <span className="text-xl font-bold"> ${totalPrice}</span>
                             </div>
                             
                             <div className="block text-center">
@@ -141,13 +146,13 @@ const ShoppingCartPage = () => {
                                         </div>
                                     </div>
                                     <div className="flex justify-between py-3">
-                                        <div className="text-left  mr-2">
+                                        <div className="text-left w-full mr-1">
                                             <label htmlFor="">Phone Number</label>
-                                            <input value={phone} onChange={e=>setPhone(e.target.value)} className="block ring-inset ring-blue-200 ring-2 rounded-md py-2 px-3 w-full my-2" type="text" placeholder="Name"/>
+                                            <input value={phone} onChange={e=>setPhone(e.target.value)} className="block ring-inset ring-blue-200 ring-2 rounded-md py-2 px-3 w-full my-2" type="text" placeholder="Your phone number"/>
                                         </div>
-                                        <div className="text-left w-80">
+                                        <div className="text-left w-full ml-1">
                                             <label htmlFor="">Address</label>
-                                            <input value={address} onChange={e=>setAddress(e.target.value)} className="block ring-inset ring-blue-200 ring-2 rounded-md py-2 pl-3 w-full my-2" type="text" placeholder="Name"/>
+                                            <input value={address} onChange={e=>setAddress(e.target.value)} className="block ring-inset ring-blue-200 ring-2 rounded-md py-2 px-3 w-full my-2" type="text" placeholder="Your address"/>
                                     </div>
                                     </div>
                                     

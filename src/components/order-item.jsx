@@ -48,31 +48,31 @@ const OrderItem = ({products, totalPrice, firstName, lastName, email, phone, add
                         <a className="menu-hover md:p-4  block duration-200  font-bold hover:text-red-500" >Shipping details</a>
                     </li>
                     
-                    <li className="invisible absolute w-[60vh]  transition-all duration-300  z-50 flex flex-col bg-white py-1 px-4 text-gray-800  group-hover:visible left-40 top-0"aria-labelledby="dropdownLargeButton">
-                    <div className="flex justify-between w-full">
-                                        <div className="text-left w-full mr-1">
-                                            <label className="text-lg font-bold">First Name: </label>
-                                            <label className="">{firstName}</label>
+                    <li className="invisible absolute lg:w-[60vh] md:w-[80vh] transition-all duration-300  z-50 flex flex-col bg-white py-1 px-4 text-gray-800  group-hover:visible left-40 top-0"aria-labelledby="dropdownLargeButton">
+                    <div className="flex lg:justify-between md:justify-start lg:w-full md:w-full">
+                        <div className="text-left lg:w-full md:w-60 mr-2">
+                            <label className="text-lg font-bold">First Name: </label>
+                            <label className="">{firstName}</label>
 
-                                        </div>
-                                        <div className="text-left w-full ml-1">
-                                            <label className="text-lg font-bold">Last Name: </label>
-                                            <label className="">{lastName}</label>
+                        </div>
+                        <div className="text-left lg:w-full md:w-30 ml-1">
+                            <label className="text-lg font-bold">Last Name: </label>
+                            <label className="">{lastName}</label>
 
-                                        </div>
-                                    </div>
-                                    <div className="flex justify-between pt-2">
-                                        <div className="text-left w-75 mr-2">
-                                            <label className="text-lg font-bold">Phone Number: </label>
-                                            <label className="">{phone}</label>
+                        </div>
+                    </div>
+                    <div className="flex lg:justify-between md:justify-start pt-2">
+                        <div className="text-left lg:w-full md:w-80 mr-2">
+                            <label className="text-lg font-bold">Phone Number: </label>
+                            <label className="">{phone}</label>
 
-                                        </div>
-                                        <div className="text-left">
-                                            <label className="text-lg font-bold">Address: </label>
-                                            <label className="">{address}</label>
+                        </div>
+                        <div className="text-center lg:w-full md:w-60">
+                            <label className="text-lg  font-bold">Address: </label>
+                            <label className="">{address}</label>
 
-                                        </div>
-                                    </div>
+                        </div>
+                    </div>
                                     
                     </li>
                 </ul></div>

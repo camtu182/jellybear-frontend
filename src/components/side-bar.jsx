@@ -23,10 +23,10 @@ const SideBar = ({ onFilter }) => {
     };
 
     return (
-        <div className="fixed top-16 left-0 w-64 h-full bg-gray-100 p-4 shadow-lg z-10 overflow-y-auto"> {/* Lowered the z-index */}
-            <h2 className="text-xl mb-4">Filters</h2>
+        <div className="md:pt-20 fixed lg:top-16 lg:left-0 md:top-16 md:left-0 w-64 h-full bg-gray-100 p-4 shadow-lg z-10 overflow-y-auto"> {/* Lowered the z-index */}
+            <h2 className="text-2xl font-bold mb-4 text-center">Filters</h2>
             <div className="mb-4">
-                <label className="block mb-2">Price Range</label>
+                <label className="block font-bold mb-2">Price Range</label>
                 <select value={priceRange === [0, Infinity] ? "all" : priceRange.join("-")} onChange={handlePriceRangeChange} className="w-full p-2 border rounded">
                     <option value="all">All</option>
                     <option value="15-30">15 - 30</option>
@@ -37,7 +37,7 @@ const SideBar = ({ onFilter }) => {
                 </select>
             </div>
             <div className="mb-4">
-                <label className="block mb-2">Price Order</label>
+                <label className="block mb-2 font-bold">Price Order</label>
                 <select value={sortOrder} onChange={handleSortOrderChange} className="w-full p-2 border rounded">
                     <option value="ascending">Ascending</option>
                     <option value="descending">Descending</option>

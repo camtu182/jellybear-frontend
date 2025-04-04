@@ -43,7 +43,7 @@ const pageSize = process.env.NEXT_PUBLIC_PAGE_SIZE
         router.push("/collections?page=" + ((+page) + 1))
     }
     return (
-        <div className="bg-blue-100 pt-5">
+        <div className="bg-blue-100 pb-10 lg:pt-20 md:pt-40 content-center">
             <section id="Projects"
                 className="static w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-5 gap-x-5 mt-10 mb-5">
                 {

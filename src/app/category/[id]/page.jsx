@@ -27,7 +27,7 @@ const ProductByCategory = ()=>{
         <div className="bg-blue-100 py-5">
         Sản phẩm thuộc danh mục {category !== null && category.attributes.name}
         <section id="Projects"
-            className="static w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-5 gap-x-5 mt-10 mb-5">
+            className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-7 gap-x-5 mt-10">
             {
                    products.map((value, index) => {
                     return <ProductComponent

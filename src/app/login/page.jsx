@@ -41,7 +41,7 @@ const LoginPage = () => {
                 <div>
                     <label for="email" className="block text-sm font-medium leading-6 text-gray-900">Username/Email address</label>
                     <div className="mt-2">
-                        <input id="email" name="email" type="email" autocomplete="email" value={email} onChange={(e)=>{setEmail(e.target.value); setErrorText("")}} required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <input id="email" name="email" type="email" autoComplete="email" value={email} onChange={(e)=>{setEmail(e.target.value); setErrorText("")}} required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                     </div>
                 </div>
 
@@ -49,11 +49,11 @@ const LoginPage = () => {
                     <div className="flex items-center justify-between">
                         <label for="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
                         <div className="text-sm">
-                            <a href="#" className="font-semibold text-red-500 hover:text-red-600">Forgot password?</a>
+                            <a href="#" className="font-semibold text-red-500 hover:text-red-600"></a>
                         </div>
                     </div>
                     <div className="mt-2">
-                        <input id="password" name="password" type="password" autocomplete="current-password" value={password} onChange={(e)=>{setPassword(e.target.value);  setErrorText("")}} required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <input id="password" name="password" type="password" autoComplete="current-password" value={password} onChange={(e)=>{setPassword(e.target.value);  setErrorText("")}} required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                     </div>
                 </div>
                 <span style={{color: "red"}}>{errorText}</span>

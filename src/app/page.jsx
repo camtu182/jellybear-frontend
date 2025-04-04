@@ -2,7 +2,7 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Link from "next/link";
-import ModalAddProduct from "@/components/modal-component";
+import PostComponent from "@/components/post-component"; // Giả sử bạn đã có PostComponent
 import ProductComponent from "@/components/product-component";
 import { callAPI } from "@/utils/api-caller";
 import Image from "next/image";
@@ -14,8 +14,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Policies from "@/components/policies";
-import About from "@/components/about";
 const pageSize = process.env.NEXT_PUBLIC_PAGE_SIZE
+const URL_SERVER = process.env.NEXT_PUBLIC_BACKEND_SERVER_MEDIA;
 
 export default function Home() {
   const [products, setProducts] = useState([])
@@ -23,12 +23,13 @@ export default function Home() {
   const [pageCount, setPageCount] = useState(1)
   const [currentPage, setCurrentPage] = useState(1);
   const router = useRouter();
+  const [posts, setPosts] = useState([]);
   const [bestSellers, setBestSellers] = useState([]); // State for best sellers
   const [featuredProducts, setFeaturedProducts] = useState([]);  const page = searchParams.get('page') !== null ? +searchParams.get('page') : 1
   useEffect(() => {
       fetchData();
       if (!isLogined()) {
-        router.replace("/login")
+        router.replace("/")
     }
     if (getUser()?.role?.name === "ShopManager"){
         router.replace("/shop-manager")
@@ -48,6 +49,8 @@ export default function Home() {
       const productRes = await callAPI("/products?populate=*", "GET");
       const allProducts = productRes.data.data;
 
+      const res2 = await callAPI(`/posts?populate=*&pagination[pageSize]=${pageSize}`, "GET");
+        setPosts(res2.data.data); // Lưu dữ liệu bài viết
       // Filter best sellers
       const bestSellerProducts = allProducts
         .sort((a, b) => b.attributes.sold - a.attributes.sold)
@@ -63,6 +66,7 @@ export default function Home() {
       console.log(error);
     }
   };
+  
   const handlePageChange = (page) => {
     setCurrentPage(page);
     fetchData(); // Fetch products for the new page
@@ -121,7 +125,7 @@ export default function Home() {
           <div className="pb-5 pt-12 w-full text-center text-4xl font-extrabold">
             <span>SẢN PHẨM BÁN CHẠY</span>
           </div>
-          <div className=" w-[80vw] mx-auto h-auto justify-center items-center gap-y-5 gap-x-5 mb-5">
+          <div className=" lg:w-[80vw] md:w-[90vw] mx-auto h-auto justify-center items-center gap-y-5 gap-x-5 mb-5">
           <Slider {...settings}>
               {bestSellers.map((value, index) => (
                 <ProductComponent
@@ -141,12 +145,12 @@ export default function Home() {
           </div>
         </div>
         <div className="block text-center w-full h-auto justify-items-center">
-          <div className="pb-5 text-4xl font-extrabold pt-14">
+          <div className="pb-5 pt-12 w-full text-center text-4xl font-extrabold">
             <span>SẢN PHẨM CỦA SHOP</span>
           </div>
           <div className=" block w-full h-auto justify-center items-center">
           <section id="Projects"
-                className=" w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-6 gap-x-6 mb-5">
+                className=" w-fit mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-y-6 gap-x-6 mb-5">
                 {products.map((value, index) => (
                 <ProductComponent
                   key={index}
@@ -217,9 +221,28 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="block text-center w-full h-auto justify-items-center ">
+          <div className="text-4xl font-extrabold pt-10 ">
+            <span>BLOG</span>
+          </div>
+          <section id="Projects"
+                className="lg:w-[55vw] md:w-[80vw] mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 justify-items-between justify-between gap-y-6 gap-x-6 ">
+                {posts.map((value, index) => (
+                <PostComponent
+                  ID={value.id}
+                  key={value.id}
+                  title={value.attributes.title}  // Tiêu đề bài viết
+                  content={value.attributes.content}  // Nội dung bài viết
+                  author={value.attributes.author}  // Tác giả
+                  date={value.attributes.create_at}  // Ngày tạo
+                  postImg={value.attributes.image.data[0].attributes.url} 
+                  // Ảnh bài viết (nếu có)
+                />
+              ))}
+            </section>
+        </div>
       </div>
       <Policies/>
-      <About/>
       <Footer />
     </div>
   );

@@ -66,12 +66,12 @@ const Header = () => {
     return (
         <header className="fixed w-full bg-orange-50 lg:px-16 px-4 py-0 flex flex-wrap justify-between items-center z-50" >
 
-            <Link href="/" className="flex-1 flex  items-center">
-            <img className="w-20 object-cover h-15 m-2" src="/logo_1.png " alt="image description"/>
-                <a className="text-4xl font-extrabold">BEAR</a>
+            <Link href="/" className="lg:block md:block items-center">
+            <img className="w-15 h-16 object-contain  m-1 ml-20" src="/logo_2.png " alt="image description"/>
+                <a className="text-4xl font-extrabold"></a>
             </Link>
             <div className="flex items-center">
-                <div className="relative max-w-xl mx-auto ">
+                <div className="relative w-2xl mx-auto ">
                     <button onClick={() => { window.location.href = '/search?searchText=' + searchText }} className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 ">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M14.795 13.408l5.204 5.204a1 1 0 01-1.414 1.414l-5.204-5.204a7.5 7.5 0 111.414-1.414zM8.5 14A5.5 5.5 0 103 8.5 5.506 5.506 0 008.5 14z" />
@@ -127,7 +127,11 @@ const Header = () => {
                         </li>
                     }
                 </ul>
-            
+
+                <ul className="md:flex items-center justify-between text-lg text-gray-700 pt-4 md:pt-0">
+                    <li><Link href="/posts" className="md:p-4 block duration-200 hover:text-yellow-400 font-medium" >About us</Link></li>
+
+                </ul>
 
             </div>
 
@@ -143,9 +147,9 @@ const Header = () => {
                 {
                     !user ?
                         <div>
-                            <Link href="/login" className="bg-white text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</Link>
+                            <Link href="/login" className="bg-white text-gray-800 hover:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</Link>
 
-                            <Link href="/register" className="bg-white text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Register</Link>
+                            <Link href="/register" className="bg-white text-gray-800 hover:text-white  hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xl px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Register</Link>
 
                         </div>
 
@@ -161,7 +165,7 @@ const Header = () => {
 
                                 <a href="/my-orders" className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-yellow-400 md:mx-2">Đơn hàng của tôi</a>
 
-                                <Link href="/user-profile" className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-yellow-400 md:mx-2">Thông tin cá nhân</Link>
+                                {/* <Link href="/user-profile" className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-yellow-400 md:mx-2">Thông tin cá nhân</Link> */}
 
                                 <a onClick={() => { logout() }} className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-yellow-400 md:mx-2">Đăng xuất</a>
 

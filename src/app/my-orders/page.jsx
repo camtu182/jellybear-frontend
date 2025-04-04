@@ -32,7 +32,7 @@ const MyOrders = ()=>{
     }
     return (
         <div className="bg-gray-100 h-full py-8">
-            <div className="container w-[60vw] mx-auto px-4 py-10">
+            <div className="container lg:w-[60vw] md:w-[80vw] mx-auto px-4 py-10">
                 <h1 className="text-4xl font-bold  text-center  mb-4">MY ORDERS</h1>
                 <div className="flex flex-col md:flex-row gap-4">
                     <div className="w-full">
